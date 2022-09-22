@@ -53,14 +53,18 @@ class AuthController extends StateNotifier<Auth> {
     }
   }
 
-  // modify for more optimization
   Future<void> update(
       {String? email,
       String? username,
       String? avatar_url,
       String? name}) async {
     try {
-      User data = await authRepository.update(username: username);
+      User data = await authRepository.update(
+          email: email,
+          username: username,
+          avatar_url: avatar_url,
+          name: name,
+          currentUserData: state.user);
       state = state.copyWith(user: data, isAuthenticated: true);
     } catch (err) {
       logger.e(err);
