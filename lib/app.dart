@@ -34,7 +34,7 @@ class _MyAppState extends ConsumerState<MyApp> {
                   if (!authState.isAuthenticated)
                     OnBoardingScreen()
                   else
-                    const HomeRoute()
+                    HomeRoute()
                 ]));
   }
 }
