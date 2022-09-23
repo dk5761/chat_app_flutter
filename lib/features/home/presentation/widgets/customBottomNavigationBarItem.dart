@@ -5,7 +5,7 @@ class CustomBottomNavigationBarItem extends ConsumerWidget {
   const CustomBottomNavigationBarItem({Key? key, required this.icon, this.text})
       : super(key: key);
 
-  final IconData icon;
+  final Icon icon;
   final String? text;
 
   @override
@@ -13,7 +13,7 @@ class CustomBottomNavigationBarItem extends ConsumerWidget {
     return Container(
       height: 20,
       child: Column(children: [
-        Icon(icon),
+        icon,
         const SizedBox(
           height: 3,
         ),

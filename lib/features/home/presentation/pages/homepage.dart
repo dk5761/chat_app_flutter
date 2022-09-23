@@ -8,15 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class HomePage extends ConsumerWidget {
   HomePage({Key? key}) : super(key: key);
 
-  List<CustomBottomNavigationBarItem> items = [
-    const CustomBottomNavigationBarItem(
-      icon: Icons.chat_bubble_outline_outlined,
-      text: "asd",
-    ),
-    const CustomBottomNavigationBarItem(icon: Icons.settings_outlined),
-    const CustomBottomNavigationBarItem(icon: Icons.emoji_emotions_rounded),
-  ];
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AutoTabsScaffold(
@@ -26,8 +17,35 @@ class HomePage extends ConsumerWidget {
         SettingsRouter(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
-        return CustomBottomNavigationBar(
-            items: items, onTap: tabsRouter.setActiveIndex);
+        return CustomBottomNavigationBar(items: [
+          CustomBottomNavigationBarItem(
+            icon: tabsRouter.activeIndex == 0
+                ? const Icon(
+                    Icons.chat_bubble_rounded,
+                    color: Colors.yellow,
+                    size: 28,
+                  )
+                : const Icon(Icons.chat_bubble_outline_outlined, size: 28),
+          ),
+          CustomBottomNavigationBarItem(
+            icon: tabsRouter.activeIndex == 1
+                ? const Icon(
+                    Icons.emoji_emotions_rounded,
+                    color: Colors.yellow,
+                    size: 28,
+                  )
+                : const Icon(Icons.emoji_emotions_outlined, size: 28),
+          ),
+          CustomBottomNavigationBarItem(
+            icon: tabsRouter.activeIndex == 2
+                ? const Icon(
+                    Icons.settings,
+                    color: Colors.yellow,
+                    size: 28,
+                  )
+                : const Icon(Icons.settings_outlined, size: 28),
+          ),
+        ], onTap: tabsRouter.setActiveIndex);
 
         // return BottomNavigationBar(
         //   elevation: 1,
