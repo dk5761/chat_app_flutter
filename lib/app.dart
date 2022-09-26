@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:chat_app/common/sockets/socket_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,6 +26,10 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(authProvider);
+
+    if (authState.isAuthenticated) {
+      ref.watch(socketClientProvider);
+    }
 
     return MaterialApp.router(
         theme: ThemeData(primarySwatch: Colors.blue, textTheme: textTheme),
