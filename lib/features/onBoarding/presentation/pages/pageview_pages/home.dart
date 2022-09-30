@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../common/customButton.dart';
-import '../../widgets/richTextWidget.dart';
+import '../../widgets/rich_text_widget.dart';
 
 class OnBoardHomePage extends ConsumerWidget {
-  const OnBoardHomePage({Key? key, required this.pageController})
-      : super(key: key);
+  OnBoardHomePage({Key? key, required this.pageController}) : super(key: key);
 
-  final PageController pageController;
+  PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    print(context);
+
     return Stack(
       children: [
         Positioned(

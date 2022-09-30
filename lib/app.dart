@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'features/onBoarding/presentation/controllers/auth_controller.dart';
-import 'routing/router.gr.dart';
+
+import 'utils/routing/router.gr.dart';
 import 'utils/theming.dart';
 
 class MyApp extends ConsumerStatefulWidget {
@@ -32,14 +33,17 @@ class _MyAppState extends ConsumerState<MyApp> {
     }
 
     return MaterialApp.router(
-        theme: ThemeData(primarySwatch: Colors.blue, textTheme: textTheme),
-        routeInformationParser: appRouter.defaultRouteParser(),
-        routerDelegate: AutoRouterDelegate.declarative(appRouter,
-            routes: (_) => [
-                  if (!authState.isAuthenticated)
-                    OnBoardingScreen()
-                  else
-                    HomeRoute()
-                ]));
+      theme: ThemeData(primarySwatch: Colors.blue, textTheme: textTheme),
+      routeInformationProvider: appRouter.routeInfoProvider(),
+      routeInformationParser:
+          appRouter.defaultRouteParser(includePrefixMatches: true),
+      routerDelegate: AutoRouterDelegate.declarative(appRouter,
+          routes: (_) => [
+                if (!authState.isAuthenticated)
+                  OnBoardingScreen()
+                else
+                  const RootRoute()
+              ]),
+    );
   }
 }

@@ -33,7 +33,20 @@ class ChatOnlineRepositoryImplementation implements OnlineRepository {
 
   @override
   Future<ChatUserResponse> getUserByEmail(String email) async {
-    final response = await ref.read(clientProvider).get('email/$email');
+    final response = await Future.delayed(const Duration(seconds: 2),
+        () => ref.read(userClientProvider).get('email/$email'));
     return ChatUserResponse.fromJson(response.data);
   }
 }
+
+final onlineRepositoryProvider =
+    Provider((ref) => ChatOnlineRepositoryImplementation(ref: ref));
+
+// final getUserByEmailProvider =
+//     FutureProvider.family<ChatUserResponse?, String>((ref, email) async {
+//   final repo = ref.watch(onlineRepositoryProvider);
+//   if (email == "") {
+//     return null;
+//   }
+//   return await repo.getUserByEmail(email);
+// });

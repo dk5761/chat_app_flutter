@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
 import '../../controllers/auth_controller.dart';
-import '../../widgets/customTextField.dart';
+import '../../widgets/custom_textField.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({Key? key, required this.pageController}) : super(key: key);
