@@ -5,6 +5,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../domain/user/user.dart';
 
+// Using Flutter Secure Storage to store the token
+// thus a service independent of the ISAR DB for storing the token
 class AuthService {
   AuthService(this.ref);
 
@@ -40,13 +42,9 @@ class AuthService {
   }
 
   Future<void> deleteUser() async {
+    await storage.delete(key: 'token');
     return await storage.delete(key: "user");
   }
 }
 
 final authServiceProvider = Provider<AuthService>((ref) => AuthService(ref));
-
-// final userProvider = FutureProvider<User?>((ref) async {
-//   final user = await ref.watch(authServiceProvider).getUser();
-//   return user;
-// });
