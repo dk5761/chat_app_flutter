@@ -32,7 +32,7 @@ dependencies:
 
   freezed: ^2.1.0+1
   url_launcher: ^6.1.4
-  flutter_riverpod: ^1.0.4
+  flutter_riverpod: ^2.0.1
   flutter_secure_storage: ^5.0.2
   intl: ^0.17.0
   dio: ^4.0.6
@@ -47,8 +47,8 @@ dependencies:
   flutter_screenutil: ^5.5.4
   isar: ^3.0.1
   isar_flutter_libs: ^3.0.1
-  socket_io_client: ^2.0.0
-  
+  socket_io_client: ^2.0.0 
+  connectivity_plus: ^2.3.7
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -69,6 +69,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.10+1
+
+
+flutter_native_splash:
+  image: assets/splash.png
+  color: "#ffffff"
 
 dependency_overrides:
   analyzer: 4.6.0
@@ -88,6 +94,7 @@ flutter:
   assets:
     - assets/images/splash/background.jpg
     - .env
+    - assets/images/defaults/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

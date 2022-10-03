@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RouteGuard extends AutoRedirectGuard {
-  RouteGuard(this.read);
+  RouteGuard(this.ref);
 
-  final Reader read;
+  final Ref ref;
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {

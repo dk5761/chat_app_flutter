@@ -1,7 +1,8 @@
-import 'package:chat_app/features/chat/domain/dbModels/message/message.dart';
-import 'package:chat_app/features/chat/domain/dbModels/userConversation/user_conversation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:isar/isar.dart';
+
+import '../../features/conversations/domain/models/message/message.dart';
+import '../../features/conversations/domain/models/userConversation/user_conversation.dart';
 
 class IsarService {
   late Isar isarDb;

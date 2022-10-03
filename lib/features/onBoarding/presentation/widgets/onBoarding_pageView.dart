@@ -1,4 +1,4 @@
-import 'package:chat_app/features/onBoarding/presentation/pages/pageview_pages/home.dart';
+import 'package:chat_app/features/onBoarding/presentation/pages/pageview_pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

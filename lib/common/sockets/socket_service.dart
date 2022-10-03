@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:chat_app/utils/providers/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
@@ -24,6 +26,13 @@ class SocketClient {
             .setExtraHeaders(
                 {'token': "${ref.watch(authProvider).user?.authToken}"})
             .build());
-    socket!.connect();
+
+    ref.watch(connectivityProvider).whenData((value) {
+      if (value == ConnectivityResult.wifi ||
+          value == ConnectivityResult.ethernet ||
+          value == ConnectivityResult.mobile) {
+        socket!.connect();
+      }
+    });
   }
 }
